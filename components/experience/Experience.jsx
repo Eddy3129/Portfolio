@@ -309,7 +309,7 @@ export default function Experience({ initialExperiences = [] }) {
         </div>
 
         {/* Hologram Container */}
-        <div className="fixed bottom-4 md:top-[52%] left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:-translate-y-1/2 z-60 w-auto md:w-full md:max-w-6xl px-0 md:px-6">
+        <div className="fixed bottom-[8vh] top-[29%] md:top-[51%] left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:-translate-y-1/2 z-60 w-auto md:w-full md:max-w-6xl px-0 md:px-6">
           <Hologram
             activeExperience={activeExperience}
             isTransitioning={isTransitioning}

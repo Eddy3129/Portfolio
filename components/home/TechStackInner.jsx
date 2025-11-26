@@ -36,7 +36,7 @@ export default function TechStack() {
       id="stack"
       className="flex flex-col items-center justify-center h-[600px] w-full"
     >
-      <div className="tech-stack-visual">
+      <div className="tech-stack-visual hidden md:block">
         <div className="eth-wrapper-3d">
           <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
             <Suspense fallback={null}>

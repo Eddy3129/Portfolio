@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { aboutData } from "./aboutData";
 import ScrollToStackButton from "./ScrollToStackButton";
+import TechStackSection from "./TechStackSection";
 
 const BIO_LINKS = [
   {
@@ -117,79 +118,7 @@ export default function About() {
         </div>
 
         {/* Stacks Section: 5 Columns */}
-        <div
-          id="tech-stack-section"
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-start border-t border-white/10 pt-12"
-        >
-          {columns.map((col, index) => (
-            <div key={index} className="w-full">
-              {/* Column Title */}
-              <div className="flex items-center gap-2 mb-6 pb-2 border-b border-white/10">
-                {col.icon && <span className="text-xl">{col.icon}</span>}
-                <h4 className="text-lg font-bold font-sans text-white">
-                  {col.title}
-                </h4>
-              </div>
-
-              {/* List of Items (Rows) */}
-              <div className="flex flex-col gap-3">
-                {col.items.map((item, i) => {
-                  const isObject = typeof item === "object";
-                  const name = isObject ? item.name : item;
-                  const icon = isObject ? item.icon : null;
-                  const link = isObject ? item.link : null;
-
-                  const CardContent = (
-                    <div
-                      className="group flex items-center gap-3 p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-neon-green/50 transition-all duration-200 w-full"
-                      style={{
-                        borderColor: col.color ? `${col.color}50` : undefined,
-                      }}
-                    >
-                      {/* Icon */}
-                      <div className="flex items-center justify-center w-8 h-8 rounded bg-slate-100 relative overflow-hidden">
-                        {icon ? (
-                          <Image
-                            src={icon}
-                            alt={name}
-                            fill
-                            className="object-contain p-1"
-                            sizes="32px"
-                          />
-                        ) : (
-                          <span className="text-xs text-gray-500 font-bold">
-                            {name.substring(0, 2).toUpperCase()}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Name */}
-                      <span className="font-mono text-sm font-medium text-gray-300 group-hover:text-white truncate">
-                        {name}
-                      </span>
-                    </div>
-                  );
-
-                  return link ? (
-                    <a
-                      key={i}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full hover:translate-x-1 transition-transform"
-                    >
-                      {CardContent}
-                    </a>
-                  ) : (
-                    <div key={i} className="w-full">
-                      {CardContent}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TechStackSection columns={columns} />
       </div>
     </section>
   );

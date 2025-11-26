@@ -1,7 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { CaretLeftIcon, CaretRightIcon, ArrowsOutSimpleIcon } from "../PhosphorIcons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  ArrowsOutSimpleIcon,
+} from "../PhosphorIcons";
 
 export default function Hologram({
   activeExperience,
@@ -12,14 +17,18 @@ export default function Hologram({
   UI_TEXT,
   formatDate,
 }) {
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
   const nextImage = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     if (!activeExperience?.photo) return;
     setCurrentImageIndex((prev) => (prev + 1) % activeExperience.photo.length);
   };
 
   const prevImage = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     if (!activeExperience?.photo) return;
     setCurrentImageIndex(
       (prev) =>
@@ -28,12 +37,34 @@ export default function Hologram({
     );
   };
 
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
   return (
     <div
       className={`
         hologram-container
         rounded-xl border-b
-        h-[60vh] md:h-auto
+        h-[70vh] md:h-auto
         ${isTransitioning ? "animate-hologram-transition" : "opacity-100"}
       `}
       style={{
@@ -58,7 +89,7 @@ export default function Hologram({
         </div>
       </div>
 
-      <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10 h-[calc(100%-24px)] overflow-y-auto md:overflow-visible">
+      <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 relative z-10 h-[calc(100%)] overflow-y-auto md:overflow-visible">
         {/* Column 1: Tech Stack & Meta */}
         <div className="flex flex-col gap-4 md:gap-6 border-b md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 shrink-0">
           <div>
@@ -74,7 +105,7 @@ export default function Hologram({
             </p>
           </div>
 
-          <div className="space-y-3 mt-auto">
+          <div className="space-y-3 mt-auto hidden md:block">
             <h4 className="text-[10px] uppercase text-gray-500 font-bold tracking-wider">
               {activeExperience.skill?.length > 0 ? "Skills" : ""}
             </h4>
@@ -93,8 +124,8 @@ export default function Hologram({
         </div>
 
         {/* Column 2: Description */}
-        <div className="border-b md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[255.74px]">
-          <p className="text-sm leading-relaxed text-gray-300 whitespace-pre-line">
+        <div className="border-b mb-4 md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[55vh] md:max-h-[255.74px]">
+          <p className="text-sm leading-relaxed pr-4 text-justify text-gray-300 whitespace-pre-line">
             {activeExperience.description}
           </p>
         </div>
@@ -105,6 +136,9 @@ export default function Hologram({
             <div
               className="relative w-full h-full rounded-lg overflow-hidden border border-blue-400/20 group cursor-pointer"
               onClick={() => setIsImageModalOpen(true)}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
             >
               <Image
                 src={activeExperience.photo[currentImageIndex].url}

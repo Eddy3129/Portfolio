@@ -1,18 +1,49 @@
 "use client";
 
 import { useState } from "react";
-import { GithubLogoIcon, LinkIcon, ArrowsOutSimpleIcon, InfoIcon } from "../PhosphorIcons";
+import {
+  GithubLogoIcon,
+  LinkIcon,
+  ArrowsOutSimpleIcon,
+  InfoIcon,
+} from "../PhosphorIcons";
 import { motion } from "framer-motion";
 import ProjectImage from "./ProjectImage";
 
 export default function ProjectCard({ project, openModal }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeTab, setActiveTab] = useState("about");
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
 
   const handleFlip = (e) => {
     // Prevent flip if clicking on interactive elements
     if (e.target.closest("button") || e.target.closest("a")) return;
     setIsFlipped(!isFlipped);
+  };
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && activeTab === "about") {
+      setActiveTab("gallery");
+    }
+    if (isRightSwipe && activeTab === "gallery") {
+      setActiveTab("about");
+    }
   };
 
   return (
@@ -96,6 +127,9 @@ export default function ProjectCard({ project, openModal }) {
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
             }}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {/* Tabs */}
             <div

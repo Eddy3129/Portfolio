@@ -52,7 +52,7 @@ export default function Contact() {
           <div className="h-px flex-1 bg-linear-to-r from-neon-green/50 to-transparent mb-4"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-start">
           {/* Left Column: Social Links & Info */}
           <div className="flex flex-col justify-center space-y-8 lg:pr-12 order-1 lg:order-1">
             <div>
@@ -124,7 +124,7 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Terminal Form */}
-          <div className="w-full order-2 lg:order-2">
+          <div className="w-full order-2 lg:order-2 mb-4">
             <div className="glass rounded-xl overflow-hidden border border-white/10 bg-[#050505] shadow-[0_0_40px_rgba(0,255,157,0.05)]">
               {/* Terminal Header */}
               <div className="bg-white/5 px-4 py-3 flex items-center gap-2 border-b border-white/5">
