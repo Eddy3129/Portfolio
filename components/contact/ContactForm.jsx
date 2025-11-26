@@ -1,14 +1,12 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useState } from "react";
 import {
   PaperPlaneRightIcon,
   CircleNotchIcon,
   CheckCircleIcon,
-  WarningCircleIcon,
 } from "../PhosphorIcons";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { submitContactForm } from "@/app/actions";
 
 const initialState = {
   success: false,
@@ -16,14 +14,73 @@ const initialState = {
 };
 
 export default function ContactForm() {
-  const [state, formAction, isPending] = useActionState(
-    submitContactForm,
-    initialState
-  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [state, setState] = useState(initialState);
   const [captchaToken, setCaptchaToken] = useState(null);
 
   const onHCaptchaChange = (token) => {
     setCaptchaToken(token);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!captchaToken) {
+      setState({
+        success: false,
+        message: "Please complete the captcha verification.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setState({ success: false, message: "" });
+
+    const formData = new FormData(e.target);
+    const object = Object.fromEntries(formData);
+
+    // Honeypot check
+    if (object.botcheck) {
+      setState({ success: false, message: "Spam detected" });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const json = JSON.stringify({
+      access_key: "2547556b-b432-436a-abbb-5df814268c6c",
+      ...object,
+      "h-captcha-response": captchaToken,
+    });
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setState({ success: true, message: "Transmission Successful" });
+      } else {
+        setState({
+          success: false,
+          message: result.message || "Transmission Failed",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setState({
+        success: false,
+        message: "Connection interrupted. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (state.success) {
@@ -36,9 +93,6 @@ export default function ContactForm() {
           <h3 className="text-white font-bold text-lg">
             Transmission Successful
           </h3>
-          <p className="text-gray-500 text-xs mt-1">
-            Transaction Hash: 0x{Math.random().toString(16).slice(2)}...
-          </p>
         </div>
         <button
           onClick={() => window.location.reload()}
@@ -50,22 +104,8 @@ export default function ContactForm() {
     );
   }
 
-  if (state.success === false && state.message) {
-    // We can show error here, or just below the form.
-    // The original code replaced the form with error UI, but usually we want to keep the form and show error.
-    // However, to match original behavior:
-    if (
-      state.message !== "Please complete the captcha verification." &&
-      state.message !== "Spam detected"
-    ) {
-      // Only show full error screen for network/api errors if desired,
-      // but better to show inline error for validation.
-      // Let's stick to the original behavior for "error" status which seemed to be for API failures.
-    }
-  }
-
   return (
-    <form action={formAction} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {state.success === false && state.message && (
         <div className="p-3 bg-red-500/10 border border-red-500/50 rounded text-red-500 text-xs text-center">
           {state.message}
@@ -77,11 +117,6 @@ export default function ContactForm() {
         name="botcheck"
         className="hidden"
         style={{ display: "none" }}
-      />
-      <input
-        type="hidden"
-        name="h-captcha-response"
-        value={captchaToken || ""}
       />
 
       {/* Name Field */}
@@ -95,7 +130,7 @@ export default function ContactForm() {
           type="text"
           className="input-field"
           placeholder="Vitalik Buterin"
-          disabled={isPending}
+          disabled={isSubmitting}
         />
       </div>
 
@@ -110,7 +145,7 @@ export default function ContactForm() {
           type="email"
           className="input-field"
           placeholder="anon@email.com"
-          disabled={isPending}
+          disabled={isSubmitting}
         />
       </div>
 
@@ -125,7 +160,7 @@ export default function ContactForm() {
           rows="5"
           className="input-field resize-none"
           placeholder="Hi, Eddy! Let's build the future..."
-          disabled={isPending}
+          disabled={isSubmitting}
         ></textarea>
       </div>
 
@@ -138,8 +173,12 @@ export default function ContactForm() {
         />
       </div>
 
-      <button type="submit" disabled={isPending} className="btn-primary group">
-        {isPending ? (
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="btn-primary group"
+      >
+        {isSubmitting ? (
           <>
             <CircleNotchIcon className="animate-spin" size={16} />
             <span>BROADCASTING...</span>
