@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { PaperPlaneRightIcon, CircleNotchIcon, CheckCircleIcon, WarningCircleIcon } from "../PhosphorIcons";
+import {
+  PaperPlaneRightIcon,
+  CircleNotchIcon,
+  CheckCircleIcon,
+  WarningCircleIcon,
+} from "../PhosphorIcons";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function ContactForm() {
@@ -167,7 +172,7 @@ export default function ContactForm() {
       <div className="transform scale-[0.85] origin-left sm:scale-100">
         <HCaptcha
           sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-          reCaptchaCompat={true}
+          reCaptchaCompat={false}
           onVerify={onHCaptchaChange}
           theme="dark"
         />

@@ -19,12 +19,6 @@ const HERO_LINKS = [
   },
 ];
 
-const STATS = [
-  { value: "$450M+", label: "TVL Secured" },
-  { value: "15+", label: "Audits Passed" },
-  { value: "50k+", label: "Tx Processed" },
-];
-
 export default function Home() {
   return (
     <section
@@ -43,7 +37,7 @@ export default function Home() {
         {/* Text Content */}
         <div>
           <TypingHero />
-          <p className="text-2xl text-gray-400 mb-8 max-w-2xl font-light">
+          <p className="text-2xl text-gray-400 mb-16 max-w-2xl font-light">
             {HERO_TEXT}
           </p>
           <div className="flex flex-wrap gap-4 font-mono">
@@ -54,7 +48,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-3 gap-8 mt-16 border-t border-white/10 pt-8">
+          {/* <div className="grid grid-cols-3 gap-8 mt-16 border-t border-white/10 pt-8">
             {STATS.map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-white font-mono">
@@ -65,7 +59,7 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* 3D TECH STACK */}
