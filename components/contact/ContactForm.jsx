@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { PaperPlaneRightIcon, CircleNotchIcon, CheckCircleIcon, WarningCircleIcon } from "../PhosphorIcons";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function ContactForm() {
@@ -55,7 +55,7 @@ export default function ContactForm() {
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in zoom-in duration-300">
         <div className="w-16 h-16 rounded-full bg-neon-green/10 flex items-center justify-center border border-neon-green/50 shadow-[0_0_20px_rgba(0,255,157,0.2)]">
-          <CheckCircle2 className="text-neon-green w-8 h-8" />
+          <CheckCircleIcon className="text-neon-green w-8 h-8" />
         </div>
         <div>
           <h3 className="text-white font-bold text-lg">
@@ -79,7 +79,7 @@ export default function ContactForm() {
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in zoom-in duration-300">
         <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.2)]">
-          <AlertCircle className="text-red-500 w-8 h-8" />
+          <WarningCircleIcon className="text-red-500 w-8 h-8" />
         </div>
         <div>
           <h3 className="text-white font-bold text-lg">Transmission Failed</h3>
@@ -180,12 +180,12 @@ export default function ContactForm() {
       >
         {status === "loading" ? (
           <>
-            <Loader2 className="animate-spin" size={16} />
+            <CircleNotchIcon className="animate-spin" size={16} />
             <span>BROADCASTING...</span>
           </>
         ) : (
           <>
-            <Send
+            <PaperPlaneRightIcon
               size={16}
               className="group-hover:translate-x-1 transition-transform"
             />

@@ -4,7 +4,7 @@ import {
   LinkedinLogoIcon,
   TerminalIcon,
   TelegramLogoIcon,
-} from "./PhosphorIcons";
+} from "../PhosphorIcons";
 import ContactForm from "./ContactForm";
 
 const SOCIAL_LINKS = [

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { CaretLeftIcon, CaretRightIcon, ArrowsOutSimpleIcon } from "../PhosphorIcons";
 
 export default function Hologram({
   activeExperience,
@@ -117,7 +117,7 @@ export default function Hologram({
 
               {/* Expand Icon Hint */}
               <div className="absolute top-2 right-2 p-1.5 bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                <Maximize2 size={16} className="text-white" />
+                <ArrowsOutSimpleIcon size={16} className="text-white" />
               </div>
 
               {/* Carousel Controls */}
@@ -127,13 +127,13 @@ export default function Hologram({
                     onClick={prevImage}
                     className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-black/50 text-white hover:bg-blue-500/50 transition-colors z-10"
                   >
-                    <ChevronLeft size={20} />
+                    <CaretLeftIcon size={20} />
                   </button>
                   <button
                     onClick={nextImage}
                     className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-black/50 text-white hover:bg-blue-500/50 transition-colors z-10"
                   >
-                    <ChevronRight size={20} />
+                    <CaretRightIcon size={20} />
                   </button>
 
                   {/* Dots Indicator */}

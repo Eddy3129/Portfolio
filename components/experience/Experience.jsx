@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CaretLeftIcon, CaretRightIcon } from "../PhosphorIcons";
 import Hologram from "./Hologram";
 import ImageModal from "./ImageModal";
 
@@ -203,7 +203,7 @@ export default function Experience({ initialExperiences = [] }) {
           onClick={handlePrev}
           className="absolute top-1/2 -translate-y-1/2 left-4 md:left-10 flex items-center gap-2 text-blue-400 hover:text-blue-300 z-20 transition-colors cursor-pointer"
         >
-          <ChevronLeft size={24} />
+          <CaretLeftIcon size={24} />
           <span className="text-[10px] font-mono uppercase tracking-widest hidden md:inline">
             {UI_TEXT.PAST_LABEL}
           </span>
@@ -215,7 +215,7 @@ export default function Experience({ initialExperiences = [] }) {
           <span className="text-[10px] font-mono uppercase tracking-widest hidden md:inline">
             {UI_TEXT.PRESENT_LABEL}
           </span>
-          <ChevronRight size={24} />
+          <CaretRightIcon size={24} />
         </button>
 
         <div

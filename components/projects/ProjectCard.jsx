@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Github, ExternalLink, Folder, Maximize2, Info } from "lucide-react";
+import { GithubLogoIcon, LinkIcon, ArrowsOutSimpleIcon, InfoIcon } from "../PhosphorIcons";
 import { motion } from "framer-motion";
 import ProjectImage from "./ProjectImage";
 
@@ -49,7 +49,7 @@ export default function ProjectCard({ project, openModal }) {
                 </>
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-zinc-800">
-                  <Folder className="text-zinc-600" size={40} />
+                  <LinkIcon className="text-zinc-600" size={40} />
                 </div>
               )}
 
@@ -84,7 +84,7 @@ export default function ProjectCard({ project, openModal }) {
 
               {/* Visual cue for flipping */}
               <div className="mt-auto flex items-center gap-2 text-xs text-purple-400/60 font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <Info size={12} /> Click to view details
+                <InfoIcon size={12} /> Click to view details
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function ProjectCard({ project, openModal }) {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-center justify-center">
-                        <Maximize2
+                        <ArrowsOutSimpleIcon
                           className="text-white opacity-0 group-hover/img:opacity-100 transform scale-75 group-hover/img:scale-100 transition-all"
                           size={16}
                         />
@@ -206,7 +206,7 @@ export default function ProjectCard({ project, openModal }) {
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-white/10 hover:border-white/20 rounded-lg text-xs font-mono transition-all text-gray-300 hover:text-white group/btn"
             >
-              <Github
+              <GithubLogoIcon
                 size={14}
                 className="group-hover/btn:scale-110 transition-transform"
               />
@@ -220,7 +220,7 @@ export default function ProjectCard({ project, openModal }) {
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-purple-600/10 hover:bg-purple-600/20 border border-purple-500/20 hover:border-purple-500/40 rounded-lg text-xs font-mono transition-all text-purple-400 hover:text-purple-300 group/btn"
             >
-              <ExternalLink
+              <LinkIcon
                 size={14}
                 className="group-hover/btn:scale-110 transition-transform"
               />

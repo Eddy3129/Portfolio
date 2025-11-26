@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ListIcon, XIcon } from "../PhosphorIcons";
 
 const NAV_LINKS = [
   { name: "About", href: "/about", colorClass: "text-neon-green" },
@@ -83,7 +83,7 @@ export default function Navbar() {
             className="md:hidden text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <XIcon size={24} /> : <ListIcon size={24} />}
           </button>
         </div>
       </div>

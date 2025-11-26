@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { XIcon, CaretLeftIcon, CaretRightIcon } from "../PhosphorIcons";
 
 export default function ImageModal({
   isOpen,
@@ -51,7 +51,7 @@ export default function ImageModal({
         }}
         className="absolute top-6 right-6 md:top-8 md:right-8 text-white/70 hover:text-white transition-colors z-210 p-2 bg-black/50 rounded-full hover:bg-white/10 border border-white/10"
       >
-        <X size={32} />
+        <XIcon size={32} />
       </button>
 
       <div
@@ -76,13 +76,13 @@ export default function ImageModal({
               onClick={prevImage}
               className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white transition-colors z-210 bg-black/50 rounded-full hover:bg-white/10 backdrop-blur-md border border-white/10"
             >
-              <ChevronLeft size={32} />
+              <CaretLeftIcon size={32} />
             </button>
             <button
               onClick={nextImage}
               className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white transition-colors z-210 bg-black/50 rounded-full hover:bg-white/10 backdrop-blur-md border border-white/10"
             >
-              <ChevronRight size={32} />
+              <CaretRightIcon size={32} />
             </button>
 
             {/* Dots */}
