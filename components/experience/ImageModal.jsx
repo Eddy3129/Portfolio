@@ -83,7 +83,7 @@ export default function ImageModal({
         <XIcon size={32} />
       </button>
 
-      <div className="relative w-full h-full max-w-6xl max-h-[30vh] flex items-center justify-center cursor-default pointer-events-none">
+      <div className="relative w-full h-full max-w-6xl max-h-[30vh] md:max-h-[85vh] flex items-center justify-center cursor-default pointer-events-none">
         <div
           className="relative w-full h-full drop-shadow-2xl pointer-events-auto"
           onClick={(e) => e.stopPropagation()}

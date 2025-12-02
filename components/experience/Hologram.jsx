@@ -6,6 +6,7 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
   ArrowsOutSimpleIcon,
+  LinkIcon,
 } from "../PhosphorIcons";
 
 export default function Hologram({
@@ -64,8 +65,8 @@ export default function Hologram({
       className={`
         hologram-container
         rounded-xl border-b
-        h-[70vh] md:h-auto
-        ${isTransitioning ? "animate-hologram-transition" : "opacity-100"}
+        h-[65vh] mt-5 md:h-auto
+        ${isTransitioning ? "animate-hologram-transition" : "opacity-95"}
       `}
       style={{
         boxShadow: "0 0 40px rgba(96, 165, 250, 0.1)",
@@ -93,19 +94,32 @@ export default function Hologram({
         {/* Column 1: Tech Stack & Meta */}
         <div className="flex flex-col gap-4 md:gap-6 border-b md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 shrink-0">
           <div>
-            <h2 className="text-2xl font-bold text-white leading-tight mb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-white leading-tight mb-2">
               {activeExperience.title}
             </h2>
             <p className="text-blue-400 font-mono text-sm font-bold">
               {activeExperience.entity}
             </p>
-            <p className="text-gray-500 text-xs mt-1">
+            <p className="text-gray-500 text-xxs md:text-xs mt-1">
               {formatDate(activeExperience.startDate)} -{" "}
               {formatDate(activeExperience.endDate)}
             </p>
           </div>
 
           <div className="space-y-3 mt-auto hidden md:block">
+            {activeExperience.website && (
+              <a
+                href={activeExperience.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors w-fit mb-4"
+              >
+                <LinkIcon size={14} />
+                <span className="font-mono underline decoration-blue-400/30 underline-offset-4">
+                  Visit Website
+                </span>
+              </a>
+            )}
             <h4 className="text-[10px] uppercase text-gray-500 font-bold tracking-wider">
               {activeExperience.skill?.length > 0 ? "Skills" : ""}
             </h4>
@@ -124,8 +138,8 @@ export default function Hologram({
         </div>
 
         {/* Column 2: Description */}
-        <div className="border-b mb-4 md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[55vh] md:max-h-[255.74px]">
-          <p className="text-sm leading-relaxed pr-4 text-justify text-gray-300 whitespace-pre-line">
+        <div className="border-b mb-4 md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[45vh] md:max-h-[255.74px]">
+          <p className="text-sm leading-relaxed pr-4 text-gray-300 whitespace-pre-line">
             {activeExperience.description}
           </p>
         </div>

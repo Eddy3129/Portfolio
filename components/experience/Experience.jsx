@@ -221,7 +221,7 @@ export default function Experience({ initialExperiences = [] }) {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto gap-4 px-[calc(50%)] no-scrollbar py-4 items-center max-w-3xl mx-auto mask-linear-fade"
+          className="flex overflow-x-auto gap-4 px-[calc(50%)] no-scrollbar py-4 items-center max-w-3xl mx-auto mask-linear-fade snap-mandatory"
         >
           {experiences.map((exp) => {
             const isActive = activeId === exp.id;
@@ -237,7 +237,7 @@ export default function Experience({ initialExperiences = [] }) {
                   scrollToCenter(exp.id);
                 }}
                 className={`
-                    experience-card relative overflow-hidden
+                    experience-card relative overflow-hidden snap-center
                     ${
                       isActive
                         ? "experience-card-active"
@@ -309,7 +309,7 @@ export default function Experience({ initialExperiences = [] }) {
         </div>
 
         {/* Hologram Container */}
-        <div className="fixed bottom-[8vh] top-[29%] md:top-[51%] left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:-translate-y-1/2 z-60 w-auto md:w-full md:max-w-6xl px-0 md:px-6">
+        <div className="fixed bottom-[8vh] top-[29%] md:top-[27%] w-[85%] left-1/2 -translate-x-1/2 md:w-full md:max-w-6xl px-0 md:px-6 z-60">
           <Hologram
             activeExperience={activeExperience}
             isTransitioning={isTransitioning}
