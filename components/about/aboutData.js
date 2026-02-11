@@ -4,14 +4,14 @@ export const aboutData = {
     role: "Tech Generalist",
     bio: `Thanks for visiting my portfolio!
 
-I’m a smart contract engineer building on the EVM ecosystem and a full-stack web developer in both Web2 and Web3. I’m in this space because I believe DeFi and decentralized technologies can truly disrupt and liberate the internet and financial system.
+I’m a full-stack developer, Web3 builder, and co-founder of Give Protocol — a no-loss donation platform powered by ERC-4626 vaults to enable sustainable giving. I’ve participated in several incubation programs, including Scroll Open Campus Season 2 and the Blockchain for Good Alliance (BGA). You can explore my experience section to learn more about my journey, as well as the project section for an overview of the projects I’ve built.
 
-I’m also the co-founder of Give Protocol, a no-loss donation platform for sustainable giving. We’ve gone through several incubation programs, including Scroll Open Campus Season 2 and the Blockchain For Good Alliance (BGA). You can explore my experience section to learn more about our journey.
+I consider myself a tech generalist whose stack spans frontend, backend, DevOps, smart contracts, as well as AI agent development. I’m drawn to the Web3 space because of the openness and inclusiveness of its communities, and I’m motivated to contribute to the ecosystem by making Web3 more accessible to everyone.
 
-The internet is my constant source of inspiration. It’s where I explore new ideas, try out new tech stacks, and keep learning. Outside of tech, I occasionally dive into macroeconomics, philosophy, and psychology - simply because the world is so interesting, and people love making it complicated as hell.
+I actively participate in hackathons and community events, where I explore new ideas, experiment with emerging technologies, and connect with ambitious builders. I believe Malaysia’s Web3 ecosystem will play an increasingly important role in the global space.
 
 Every story starts somewhere. If you’d like to connect, feel free to drop me a DM through the contact page!`,
-    avatar: "/pfp.png",
+    avatar: "/pfp.jpeg",
   },
   columns: [
     {

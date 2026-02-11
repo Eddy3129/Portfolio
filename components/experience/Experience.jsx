@@ -14,9 +14,17 @@ const UI_TEXT = {
 };
 
 export default function Experience({ initialExperiences = [] }) {
-  // Reverse the experiences so that Oldest is Left, Newest is Right (Present)
+  // Sort by end date: earliest end dates left, latest/no end date (Present) right
   const experiences = useMemo(
-    () => [...initialExperiences].reverse(),
+    () => [...initialExperiences].sort((a, b) => {
+      // No end date means "Present" - should appear last (rightmost)
+      if (!a.endDate && !b.endDate) return 0;
+      if (!a.endDate) return 1;  // a is present, comes after b
+      if (!b.endDate) return -1; // b is present, comes after a
+
+      // Both have end dates, sort chronologically (earliest first)
+      return new Date(a.endDate) - new Date(b.endDate);
+    }),
     [initialExperiences]
   );
 

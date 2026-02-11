@@ -1,6 +1,8 @@
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -30,6 +32,8 @@ export default function RootLayout({ children }) {
         <div className="fixed inset-0 bg-black/50 -z-10" />
         <Navbar />
         <main className="min-h-screen pt-20">{children}</main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

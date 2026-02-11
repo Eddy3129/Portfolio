@@ -16,11 +16,12 @@ const BIO_LINKS = [
     external: true,
   },
   {
-    text: "Blockchain For Good Alliance (BGA)",
+    text: "Blockchain for Good Alliance (BGA)",
     href: "https://chainforgood.org/",
     external: true,
   },
   { text: "experience section", href: "/experience", external: false },
+  { text: "project section", href: "/projects", external: false },
   { text: "contact page", href: "/contact", external: false },
 ];
 
@@ -46,7 +47,7 @@ export default function About() {
       return (
         <p
           key={index}
-          className="text-base text-justify text-gray-400 leading-relaxed font-sans mb-3 last:mb-0 mx-auto md:mx-0"
+          className="text-base text-justify text-gray-300 leading-relaxed font-sans mb-3 last:mb-0 mx-auto md:mx-0"
         >
           {parts.map((part, i) => {
             const link = BIO_LINKS.find((l) => l.text === part);
