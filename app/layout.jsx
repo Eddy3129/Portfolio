@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
     >
       <body className="antialiased text-[#e0e0e0]">
