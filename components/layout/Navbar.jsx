@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ViewTransition } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ListIcon, XIcon } from "../PhosphorIcons";
@@ -53,6 +53,7 @@ export default function Navbar() {
 
   return (
     <nav
+      style={{ viewTransitionName: "site-header" }}
       className={`fixed w-full z-50 top-0 backdrop-blur-md border-b bg-linear-to-b transition-all duration-500 ${getNavStyle()}`}
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -71,9 +72,14 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={getLinkStyle(link.href, link.colorClass)}
+                className={`relative py-1 ${getLinkStyle(link.href, link.colorClass)}`}
               >
                 {link.name}
+                {pathname === link.href && (
+                  <ViewTransition name="nav-indicator">
+                    <span className="absolute -bottom-1 left-0 h-px w-full bg-current" />
+                  </ViewTransition>
+                )}
               </Link>
             ))}
           </div>
@@ -81,6 +87,8 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white p-2"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <XIcon size={24} /> : <ListIcon size={24} />}

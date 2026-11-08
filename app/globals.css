@@ -326,3 +326,52 @@ canvas {
     @apply relative bg-black/80 border border-blue-400/30 rounded-xl backdrop-blur-xl overflow-hidden;
   }
 }
+
+/* --- PAGE TRANSITIONS (React <ViewTransition>, see app/template.jsx) --- */
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+    filter: blur(4px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+}
+::view-transition-old(.page-exit) {
+  animation: page-out 180ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+::view-transition-new(.page-enter) {
+  animation: page-in 320ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+/* Navbar stays put while pages swap underneath */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Active nav underline glides between links */
+::view-transition-group(nav-indicator) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
