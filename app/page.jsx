@@ -2,7 +2,11 @@ import Link from "next/link";
 import TypingHero from "../components/home/TypingHero";
 import TechStack from "../components/home/TechStack";
 
-const HERO_TEXT = "Web 3 Developer, Full-stack Engineer & Degen.";
+const HERO_ROLES = [
+  "Forward Deployed Engineer",
+  "AI Solutions Architect",
+  "0-to-1 Builder",
+];
 
 const HERO_LINKS = [
   {
@@ -37,9 +41,14 @@ export default function Home() {
         {/* Text Content */}
         <div>
           <TypingHero />
-          <p className="text-2xl text-gray-400 mb-16 max-w-2xl font-light">
-            {HERO_TEXT}
-          </p>
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xl md:text-2xl text-gray-400 mb-16 font-light">
+            {HERO_ROLES.map((role, i) => (
+              <li key={role} className="flex items-center gap-4 whitespace-nowrap">
+                {i > 0 && <span className="text-neon-green" aria-hidden="true">/</span>}
+                {role}
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-wrap gap-4 font-mono">
             {HERO_LINKS.map((link) => (
               <Link key={link.text} href={link.href} className={link.className}>
