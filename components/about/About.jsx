@@ -1,32 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { aboutData } from "./aboutData";
-import ScrollToStackButton from "./ScrollToStackButton";
-import TechStackSection from "./TechStackSection";
+import TechStackSection, { StackCard } from "./TechStackSection";
+import AboutTabs from "./AboutTabs";
 
 const BIO_LINKS = [
+  { text: "Forward Deployed Engineer", href: "/experience", external: false },
+  { text: "Give Protocol", href: "/projects", external: false },
   {
-    text: "Give Protocol",
-    href: "https://www.linkedin.com/company/give-protocol",
+    text: "LinkedIn",
+    href: "https://www.linkedin.com/in/eddy-limfy/",
     external: true,
   },
-  {
-    text: "Scroll Open Campus Season 2",
-    href: "https://openeconomy.xyz/",
-    external: true,
-  },
-  {
-    text: "Blockchain for Good Alliance (BGA)",
-    href: "https://chainforgood.org/",
-    external: true,
-  },
-  { text: "experience section", href: "/experience", external: false },
-  { text: "project section", href: "/projects", external: false },
   { text: "contact page", href: "/contact", external: false },
 ];
 
 export default function About() {
-  const { profile, columns } = aboutData;
+  const { profile, techStack, spokenLanguages } = aboutData;
 
   // Helper to process bio text with links
   const renderBio = (bio) => {
@@ -47,7 +37,7 @@ export default function About() {
       return (
         <p
           key={index}
-          className="text-base text-justify text-gray-300 leading-relaxed font-sans mb-3 last:mb-0 mx-auto md:mx-0"
+          className="text-base md:text-[17px] text-left text-gray-300 leading-7 md:leading-8 font-sans first:text-gray-100 first:text-center"
         >
           {parts.map((part, i) => {
             const link = BIO_LINKS.find((l) => l.text === part);
@@ -56,7 +46,7 @@ export default function About() {
                 <Link
                   key={i}
                   href={link.href}
-                  className="text-neon-green hover:underline"
+                  className="text-neon-green underline decoration-neon-green/30 underline-offset-4 hover:decoration-neon-green transition-colors"
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                 >
@@ -82,45 +72,61 @@ export default function About() {
           <div className="h-px flex-1 bg-linear-to-r from-neon-green/50 to-transparent mb-4"></div>
         </div>
 
-        {/* Header Section: Compact & Professional */}
-        <div className="pt-8 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-10 gap-y-8 items-start mb-16">
-          {/* Profile Picture */}
-          <div className="flex justify-center md:justify-start shrink-0">
-            <div className="w-40 h-40 rounded-full border-2 border-neon-green overflow-hidden shadow-[0_0_20px_rgba(0,255,157,0.2)] bg-zinc-900 relative">
-              <Image
-                src={profile.avatar}
-                alt={profile.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 160px, 160px"
-              />
-            </div>
+        {/* 1. Who: photo + name */}
+        <div className="pt-8 mb-8 flex flex-col items-center text-center gap-5">
+          <div className="w-40 h-40 rounded-full border-2 border-neon-green overflow-hidden shadow-[0_0_20px_rgba(0,255,157,0.2)] bg-zinc-900 relative">
+            <Image
+              src={profile.avatar}
+              alt={profile.name}
+              fill
+              className="object-cover"
+              sizes="160px"
+            />
           </div>
-
-          {/* Bio Text */}
-          <div className="space-y-4 text-center md:text-left pr-6">
-            <div>
-              <h2 className="text-4xl font-bold font-sans text-white mb-1">
-                {profile.name}
-              </h2>
-              <h3 className="text-xl text-neon-green font-mono">
-                {profile.role}
-              </h3>
-            </div>
-            <div className="space-y-3">{renderBio(profile.bio)}</div>
-
-            {/* Separator & Scroll Button */}
-            <div className="flex items-center gap-4 mt-12">
-              <div className="h-px flex-1 bg-linear-to-r from-neon-green/50 to-transparent"></div>
-              <ScrollToStackButton />
-              <div className="h-px flex-1 bg-linear-to-l from-neon-green/50 to-transparent"></div>
-            </div>
+          <div>
+            <h2 className="text-4xl font-bold font-sans text-white mb-1">
+              {profile.name}
+            </h2>
+            <h3 className="text-xl text-neon-green font-mono">
+              {profile.role}
+            </h3>
           </div>
         </div>
 
-        {/* Stacks Section: 5 Columns */}
-        <TechStackSection columns={columns} />
+        <AboutTabs
+          story={
+            <div className="max-w-4xl mx-auto space-y-5">
+              {renderBio(profile.bio)}
+            </div>
+          }
+          skills={
+            <div className="grid gap-6">
+              <Panel title="Tech Stack">
+                <TechStackSection columns={techStack} />
+              </Panel>
+              <Panel title="Language Stack">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 lg:gap-6">
+                  {spokenLanguages.map((item) => (
+                    <StackCard key={item.name} item={item} color="#4FC08D" />
+                  ))}
+                </div>
+              </Panel>
+            </div>
+          }
+        />
       </div>
     </section>
+  );
+}
+
+
+function Panel({ title, children }) {
+  return (
+    <div className="min-w-0 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-sm p-5 md:p-7">
+      <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-neon-green mb-6">
+        {title}
+      </h3>
+      {children}
+    </div>
   );
 }

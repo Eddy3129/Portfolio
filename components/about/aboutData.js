@@ -1,104 +1,61 @@
 export const aboutData = {
   profile: {
     name: "Eddy Lim",
-    role: "Tech Generalist",
-    bio: `Thanks for visiting my portfolio!
+    role: "Forward Deployed Engineer",
+    bio: `Thank you for visiting my portfolio.
 
-I’m a full-stack developer, Web3 builder, and co-founder of Give Protocol — a no-loss donation platform powered by ERC-4626 vaults to enable sustainable giving. I’ve participated in several incubation programs, including Scroll Open Campus Season 2 and the Blockchain for Good Alliance (BGA). You can explore my experience section to learn more about my journey, as well as the project section for an overview of the projects I’ve built.
+From an early age, I've been fascinated by how the world unravels its mysteries, from the fundamentals of science and technology to the economic, ideological, and social forces that shape the world we live in today. Eventually, that same curiosity about emerging technologies led me into the world of computers.
 
-I consider myself a tech generalist whose stack spans frontend, backend, DevOps, smart contracts, as well as AI agent development. I’m drawn to the Web3 space because of the openness and inclusiveness of its communities, and I’m motivated to contribute to the ecosystem by making Web3 more accessible to everyone.
+Currently, I work as a Forward Deployed Engineer, working across different industries and domains to solve real-world business problems. I strive to uncover opportunities for optimization through data engineering, machine learning, and artificial intelligence. While rapidly evolving technologies have dramatically boosted productivity, having the right strategy behind them matters just as much, if not more. Hence, I believe that every problem deserves a thoughtfully architected solution that takes into account the concrete needs of stakeholders and remains grounded in practical realities.
 
-I actively participate in hackathons and community events, where I explore new ideas, experiment with emerging technologies, and connect with ambitious builders. I believe Malaysia’s Web3 ecosystem will play an increasingly important role in the global space.
+I have consistently participated in hackathons, as they provide opportunities to test my ideas against some of the most interesting problems. Some I've won, and others I haven't. One of the highlights was Give Protocol, which gave me the opportunity to pitch on the global stage at the Blockchain for Good Hackathon in Copenhagen, Denmark. It was a joint initiative by Bybit and the United Nations Development Programme (UNDP) AltFinLab, bringing together project builders working at the intersection of alternative finance and sustainability for social impact.
 
-Every story starts somewhere. If you’d like to connect, feel free to drop me a DM through the contact page!`,
+For the projects where I failed, I find those experiences just as valuable. They taught me to validate assumptions, recognize what doesn't work, collaborate better with my teammates, and perhaps most importantly, appreciate the brightest ideas and projects from other builders. Seeing what others are capable of inspires me to think further, challenge my own perspectives, and encourages me to build a winning solution next time.
+
+Moving forward, I aspire to be both a strategic thinker and a rigorous executor, driven by the desire to turn ideas into impactful solutions. If my story or work interests you, feel free to connect with me on LinkedIn or drop me a message through the contact page. I'll get back to you as soon as possible.`,
     avatar: "/pfp.jpeg",
   },
-  columns: [
+  techStack: [
     {
-      title: "Frontend",
-      color: "#61DAFB",
+      title: "AI Agents",
+      color: "#D97757",
       items: [
         {
-          name: "React",
-          icon: "/icons/frontend/react.png",
-          link: "https://react.dev",
+          name: "Claude Code",
+          icon: "/icons/tools/claude.svg",
+          link: "https://claude.com/claude-code",
         },
         {
-          name: "Next.js",
-          icon: "/icons/frontend/nextjs.png",
-          link: "https://nextjs.org",
+          name: "LangGraph",
+          icon: "/icons/tools/langgraph.svg",
+          link: "https://www.langchain.com/langgraph",
         },
         {
-          name: "Tailwind CSS",
-          icon: "/icons/frontend/tailwind.png",
-          link: "https://tailwindcss.com",
+          name: "Pi Agent",
+          icon: "/icons/tools/pi.svg",
+          link: "https://pi.dev",
         },
         {
-          name: "Ethers.js",
-          icon: "/icons/frontend/ethers.png",
-          link: "https://docs.ethers.org",
+          name: "DeepSeek Harness",
+          icon: "/icons/tools/deepseek.png",
+          link: "https://github.com/deepseek-ai/deepseek-harness",
         },
         {
-          name: "HTMX",
-          icon: "/icons/frontend/htmx.png",
-          link: "https://htmx.org",
+          name: "Hermes Agent",
+          icon: "/icons/tools/hermes.png",
+          link: "https://github.com/NousResearch/hermes-agent",
         },
       ],
     },
     {
-      title: "Backend",
-      color: "#68A063",
+      title: "Programming Languages",
+      color: "#3178C6",
       items: [
-        {
-          name: "Foundry",
-          icon: "/icons/backend/foundry.png",
-          link: "https://book.getfoundry.sh",
-        },
-        {
-          name: "Hardhat",
-          icon: "/icons/backend/hardhat.png",
-          link: "https://hardhat.org",
-        },
-        {
-          name: "Node.js",
-          icon: "/icons/backend/nodejs.png",
-          link: "https://nodejs.org",
-        },
-        {
-          name: "GraphQL",
-          icon: "/icons/backend/graphql.png",
-          link: "https://graphql.org",
-        },
-        {
-          name: "Laravel",
-          icon: "/icons/backend/laravel.png",
-          link: "https://laravel.com",
-        },
-      ],
-    },
-    {
-      title: "Programming Langs",
-      color: "#F7DF1E",
-      items: [
-        {
-          name: "Solidity",
-          icon: "/icons/backend/solidity.png",
-          link: "https://soliditylang.org",
-        },
-        {
-          name: "JavaScript",
-          icon: "/icons/prog_lang/js.png",
-          link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        },
+        { name: "Go", icon: "/icons/tools/go.svg", link: "https://go.dev" },
         {
           name: "TypeScript",
           icon: "/icons/prog_lang/ts.png",
           link: "https://www.typescriptlang.org",
-        },
-        {
-          name: "Java",
-          icon: "/icons/prog_lang/java.png",
-          link: "https://www.java.com",
         },
         {
           name: "Python",
@@ -106,9 +63,9 @@ Every story starts somewhere. If you’d like to connect, feel free to drop me a
           link: "https://www.python.org",
         },
         {
-          name: "PHP",
-          icon: "/icons/prog_lang/php.png",
-          link: "https://www.php.net",
+          name: "Rust",
+          icon: "/icons/tools/rust.svg",
+          link: "https://www.rust-lang.org",
         },
         {
           name: "C",
@@ -118,18 +75,18 @@ Every story starts somewhere. If you’d like to connect, feel free to drop me a
       ],
     },
     {
-      title: "DevOps / Database",
-      color: "#FF8C00",
+      title: "Data Engineering & Platform",
+      color: "#336791",
       items: [
         {
-          name: "AWS",
+          name: "AWS Cloud Services",
           icon: "/icons/devops/aws.png",
           link: "https://aws.amazon.com",
         },
         {
-          name: "Docker",
-          icon: "/icons/devops/docker.png",
-          link: "https://www.docker.com",
+          name: "Databricks",
+          icon: "/icons/tools/databricks.svg",
+          link: "https://www.databricks.com",
         },
         {
           name: "PostgreSQL",
@@ -137,31 +94,53 @@ Every story starts somewhere. If you’d like to connect, feel free to drop me a
           link: "https://www.postgresql.org",
         },
         {
-          name: "MySQL",
-          icon: "/icons/devops/mysql.png",
-          link: "https://www.mysql.com",
+          name: "Docker",
+          icon: "/icons/devops/docker.png",
+          link: "https://www.docker.com",
         },
         {
-          name: "Supabase",
-          icon: "/icons/devops/supabase.png",
-          link: "https://supabase.com",
-        },
-        {
-          name: "Alibaba Cloud",
-          icon: "/icons/devops/alibaba.png",
-          link: "https://www.alibabacloud.com",
+          name: "Podman",
+          icon: "/icons/tools/podman.svg",
+          link: "https://podman.io",
         },
       ],
     },
     {
-      title: "I can speak & write in",
-      color: "#4FC08D",
+      title: "Web3",
+      color: "#8B5CF6",
       items: [
-        { name: "English", icon: "/icons/languages/uk.png" },
-        { name: "Chinese", icon: "/icons/languages/china.png" },
-        { name: "Malay", icon: "/icons/languages/malay.png" },
-        { name: "Cantonese", icon: "/icons/languages/hongkong.png" },
+        {
+          name: "Foundry",
+          icon: "/icons/backend/foundry.png",
+          link: "https://getfoundry.sh",
+        },
+        {
+          name: "Solidity",
+          icon: "/icons/backend/solidity.png",
+          link: "https://soliditylang.org",
+        },
+        {
+          name: "viem",
+          icon: "/icons/tools/viem.png",
+          link: "https://viem.sh",
+        },
+        {
+          name: "Ethers.js",
+          icon: "/icons/frontend/ethers.png",
+          link: "https://docs.ethers.org",
+        },
+        {
+          name: "MetaMask",
+          icon: "/icons/tools/metamask.png",
+          link: "https://metamask.io",
+        },
       ],
     },
+  ],
+  spokenLanguages: [
+    { name: "English", icon: "/icons/languages/uk.png" },
+    { name: "Chinese", icon: "/icons/languages/china.png" },
+    { name: "Malay", icon: "/icons/languages/malay.png" },
+    { name: "Cantonese", icon: "/icons/languages/hongkong.png" },
   ],
 };

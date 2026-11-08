@@ -338,6 +338,28 @@ canvas {
   animation: page-in 320ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
 }
 
+/* About tabs: old panel lifts away, new one rises in (components/about/AboutTabs.jsx) */
+@keyframes tab-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+    filter: blur(3px);
+  }
+}
+@keyframes tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(3px);
+  }
+}
+::view-transition-old(.tab-out) {
+  animation: tab-out 160ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+::view-transition-new(.tab-in) {
+  animation: tab-in 380ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
+}
+
 /* Navbar stays put while pages swap underneath */
 ::view-transition-group(site-header) {
   animation: none;
