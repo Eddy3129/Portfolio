@@ -151,12 +151,22 @@ export default function Experience({ initialExperiences = [] }) {
     }
   }, [activeId]);
 
+  // Debounce timers live on window; kill them when leaving the page
+  useEffect(
+    () => () => {
+      clearTimeout(window.scrollEndTimeout);
+      clearTimeout(window.wheelTimeout);
+    },
+    []
+  );
+
   const handleScroll = useCallback(() => {
     if (!scrollRef.current || isAutoScrolling.current) return;
     if (window.scrollEndTimeout) clearTimeout(window.scrollEndTimeout);
 
     window.scrollEndTimeout = setTimeout(() => {
       const container = scrollRef.current;
+      if (!container) return; // unmounted (navigated away) before debounce fired
       const center = container.scrollLeft + container.clientWidth / 2;
       let closest = null;
       let minDiff = Infinity;
