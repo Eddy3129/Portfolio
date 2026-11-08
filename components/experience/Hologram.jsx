@@ -73,7 +73,8 @@ export default function Hologram({
       }}
     >
       {/* Scanlines */}
-      <div className="absolute inset-0 pointer-events-none z-0 bg-[linear-gradient(transparent_50%,rgba(96,165,250,0.05)_50%)] bg-size-[100%_4px] animate-scan" />
+      {/* ponytail: static scanlines; animating them repainted the blurred hologram every frame (~15fps) */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[linear-gradient(transparent_50%,rgba(96,165,250,0.05)_50%)] bg-size-[100%_4px]" />
 
       {/* Top Bar Decoration */}
       <div className="h-6 border-b border-blue-400/20 bg-blue-900/10 flex items-center px-4 justify-between shrink-0">

@@ -225,17 +225,6 @@ canvas {
   background: rgba(96, 165, 250, 0.3);
   border-radius: 2px;
 }
-@keyframes scan {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
-  }
-}
-.animate-scan {
-  animation: scan 4s linear infinite;
-}
 @keyframes hologramTransition {
   0% {
     opacity: 1;
