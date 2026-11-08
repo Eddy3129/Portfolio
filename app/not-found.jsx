@@ -19,7 +19,7 @@ export default function NotFound() {
           404
         </h1>
         <h2 className="text-2xl md:text-3xl text-gray-200 font-light max-w-2xl mx-auto leading-relaxed">
-          The page you're looking for is at least{" "}
+          The page you&apos;re looking for is at least{" "}
           <span className="text-blue-400 font-mono whitespace-nowrap">
             one quadrillion lightyears
           </span>{" "}
