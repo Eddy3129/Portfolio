@@ -38,7 +38,7 @@ export default function TechStack() {
     >
       <div className="tech-stack-visual hidden md:block">
         <div className="eth-wrapper-3d">
-          <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
+          <Canvas camera={{ position: [0, 0, 8], fov: 50 }} dpr={[1, 1.5]}>
             <Suspense fallback={null}>
               <ambientLight intensity={0.8} />
               <directionalLight position={[5, 5, 5]} intensity={1} />
