@@ -93,31 +93,29 @@ export default function Contact() {
               <p>
                 <span className="text-purple-400">const</span>{" "}
                 <span className="text-blue-400">status</span> ={" "}
-                <span className="text-green-400">"open to work & network"</span>
-                ;
+                <span className="text-green-400">{'"open to work & collaboration"'}</span>;
               </p>
               <p className="mt-2">
+                <span className="text-purple-400">async function</span>{" "}
+                <span className="text-yellow-400">reachOut</span>(
+                <span className="text-blue-400">you</span>) &#123;
+              </p>
+              <p className="pl-4">
+                <span className="text-yellow-400">await</span>{" "}
+                <span className="text-blue-400">reply</span>.send(
+                <span className="text-green-400">{"`Hey ${you.name}, thanks for reaching out! 👋`"}</span>);
+              </p>
+              <p className="pl-4">
                 <span className="text-purple-400">if</span> (
-                <span className="text-blue-400">project</span>.isInteresting)
-                &#123;
+                <span className="text-blue-400">you</span>.haveAnIdea){" "}
+                <span className="text-yellow-400">await</span> brainstorm(
+                <span className="text-blue-400">together</span>);
               </p>
               <p className="pl-4">
-                <span className="text-yellow-400">await</span>{" "}
-                <span className="text-blue-400">reply</span>.send(
-                <span className="text-green-400">"LFG!"</span>);
-              </p>
-              <p>
-                &#125; <span className="text-purple-400">else if</span> (
-                <span className="text-blue-400">person</span>.isInteresting)
-                &#123;
-              </p>
-              <p className="pl-4">
-                <span className="text-yellow-400">await</span>{" "}
-                <span className="text-blue-400">reply</span>.send(
-                <span className="text-green-400">"Let's connect! :)"</span>);
-              </p>
-              <p className="pl-4">
-                <span className="text-blue-400">connection</span>++;
+                <span className="text-purple-400">if</span> (
+                <span className="text-blue-400">you</span>.haveAnOpportunity){" "}
+                <span className="text-yellow-400">await</span> scheduleCall(
+                <span className="text-blue-400">soon</span>);
               </p>
               <p>&#125;</p>
             </div>
@@ -144,7 +142,7 @@ export default function Contact() {
                 <div className="mb-8 space-y-2 text-gray-400">
                   <div className="flex gap-2">
                     <span className="text-neon-green">
-                      0xEddy@web3forms:~$
+                      EddyLim@web3forms:~$
                     </span>
                     <span className="typing-effect">./initiate_contact.sh</span>
                   </div>

@@ -74,13 +74,13 @@ export default function About() {
 
         {/* 1. Who: photo + name */}
         <div className="pt-8 mb-8 flex flex-col items-center text-center gap-5">
-          <div className="w-40 h-40 rounded-full border-2 border-neon-green overflow-hidden shadow-[0_0_20px_rgba(0,255,157,0.2)] bg-zinc-900 relative">
+          <div className="w-48 h-48 rounded-full border-2 border-neon-green overflow-hidden shadow-[0_0_20px_rgba(0,255,157,0.2)] bg-zinc-900 relative">
             <Image
               src={profile.avatar}
               alt={profile.name}
               fill
-              className="object-cover"
-              sizes="160px"
+              className="object-cover scale-[1.25] translate-y-[11%]" /* ~20% crop, nudged down to centre the face (max 12.5% before edge shows) */
+              sizes="192px"
             />
           </div>
           <div>

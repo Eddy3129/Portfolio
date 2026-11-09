@@ -139,7 +139,7 @@ export default function Hologram({
         </div>
 
         {/* Column 2: Description */}
-        <div className="border-b mb-4 md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[45vh] md:max-h-[255.74px]">
+        <div className="border-b mb-4 md:border-b-0 md:border-r border-blue-400/20 pb-6 md:pb-0 md:pr-6 overflow-y-auto custom-scrollbar max-h-[45vh] md:max-h-[307px]">
           <p className="text-sm leading-relaxed pr-4 text-gray-300 whitespace-pre-line">
             {activeExperience.description}
           </p>

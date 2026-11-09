@@ -63,7 +63,7 @@ export default function Navbar() {
             className="font-mono text-2xl font-bold text-white tracking-tighter cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            0x<span className={getLogoColor()}>Eddy</span>
+            <span className={getLogoColor()}>Eddy</span>Lim
           </Link>
 
           {/* Desktop Menu */}
