@@ -181,10 +181,6 @@ canvas {
     @apply flex items-center gap-3 p-4 rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-300;
   }
 
-  .project-card-container {
-    @apply relative flex flex-col bg-zinc-900/80 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/40 hover:bg-purple-900/10 hover:scale-[1.02] transition-all duration-500 h-[480px];
-  }
-
   .experience-container {
     @apply fixed inset-0 w-full bg-linear-to-b from-black/50 to-blue-400/20 overflow-hidden font-sans selection:bg-blue-500/30 flex flex-col;
   }

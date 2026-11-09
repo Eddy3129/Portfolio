@@ -1,21 +1,17 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 import ImageModal from "../experience/ImageModal";
 import ProjectCard from "./ProjectCard";
+import ProjectDetail from "./ProjectDetail";
 
 export default function Projects({ initialProjects = [] }) {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const openModal = useCallback((project, index = 0) => {
-    if (project.photo && project.photo.length > 0) {
-      setSelectedProject(project);
-      setCurrentImageIndex(index);
-      setIsModalOpen(true);
-    }
-  }, []);
+  const [openId, setOpenId] = useState(null);
+  const [zoomIndex, setZoomIndex] = useState(null);
+  const open = initialProjects.find((p) => p.id === openId);
+  const close = useCallback(() => setOpenId(null), []);
 
   return (
     <div className="fixed inset-0 w-full text-white font-sans flex flex-col overflow-hidden">
@@ -34,29 +30,46 @@ export default function Projects({ initialProjects = [] }) {
         </div>
       </div>
 
-      {/* Scrollable Grid */}
-      <div className="flex-1 w-full overflow-y-auto custom-scrollbar px-6 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {initialProjects.map((project, index) => (
+      <LayoutGroup>
+        {/* Scrollable Grid */}
+        <div className="flex-1 w-full overflow-y-auto custom-scrollbar px-6 pb-20">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {initialProjects.map((project) => (
               <ProjectCard
-                key={project.id || index}
+                key={project.id}
                 project={project}
-                openModal={openModal}
+                onOpen={() => setOpenId(project.id)}
               />
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Image Modal */}
-      <ImageModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        images={selectedProject?.photo}
-        currentIndex={currentImageIndex}
-        setCurrentIndex={setCurrentImageIndex}
-      />
+        {/* portal: the page wrapper is its own stacking context, so the dialog couldn't clear the navbar */}
+        {typeof document !== "undefined" &&
+          createPortal(
+            <>
+              <AnimatePresence>
+                {open && (
+                  <ProjectDetail
+                    key={open.id}
+                    project={open}
+                    onClose={close}
+                    onZoom={setZoomIndex}
+                    zoomed={zoomIndex !== null}
+                  />
+                )}
+              </AnimatePresence>
+              <ImageModal
+                isOpen={zoomIndex !== null}
+                onClose={() => setZoomIndex(null)}
+                images={open?.photo}
+                currentIndex={zoomIndex ?? 0}
+                setCurrentIndex={setZoomIndex}
+              />
+            </>,
+            document.body,
+          )}
+      </LayoutGroup>
     </div>
   );
 }
