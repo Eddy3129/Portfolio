@@ -13,7 +13,7 @@ I have consistently participated in hackathons, as they provide opportunities to
 For the projects where I failed, I find those experiences just as valuable. They taught me to validate assumptions, recognize what doesn't work, collaborate better with my teammates, and perhaps most importantly, appreciate the brightest ideas and projects from other builders. Seeing what others are capable of inspires me to think further, challenge my own perspectives, and encourages me to build a winning solution next time.
 
 Moving forward, I aspire to be both a strategic thinker and a rigorous executor, driven by the desire to turn ideas into impactful solutions. If my story or work interests you, feel free to connect with me on LinkedIn or drop me a message through the contact page. I'll get back to you as soon as possible.`,
-    avatar: "/profile.jpg",
+    avatar: "/avatar.jpg",
   },
   techStack: [
     {

@@ -79,8 +79,9 @@ export default function About() {
               src={profile.avatar}
               alt={profile.name}
               fill
-              className="object-cover scale-[1.25] translate-y-[11%]" /* ~20% crop, nudged down to centre the face (max 12.5% before edge shows) */
+              className="object-cover"
               sizes="192px"
+              quality={90} /* crop is baked into the file; CSS zoom upscaled it and went soft */
             />
           </div>
           <div>
