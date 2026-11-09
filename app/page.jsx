@@ -10,14 +10,14 @@ const HERO_ROLES = [
 
 const HERO_LINKS = [
   {
-    text: "View_Portfolio",
+    text: "View_Experience",
     href: "/experience",
     className:
       "px-8 py-4 bg-neon-green text-black font-bold rounded hover:bg-white transition-colors",
   },
   {
-    text: "Contact_Me",
-    href: "/contact",
+    text: "View_Projects",
+    href: "/projects",
     className:
       "px-8 py-4 border border-white/20 hover:border-white text-white rounded transition-colors",
   },
