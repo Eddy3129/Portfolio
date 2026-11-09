@@ -1,6 +1,7 @@
 "use client";
 
 export {
+  EnvelopeSimpleIcon,
   GithubLogoIcon,
   XLogoIcon,
   LinkedinLogoIcon,

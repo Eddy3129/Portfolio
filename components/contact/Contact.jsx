@@ -1,13 +1,19 @@
 import {
+  EnvelopeSimpleIcon,
   GithubLogoIcon,
-  XLogoIcon,
   LinkedinLogoIcon,
   TerminalIcon,
-  TelegramLogoIcon,
 } from "../PhosphorIcons";
 import ContactForm from "./ContactForm";
+import CopyEmail from "./CopyEmail";
 
 const SOCIAL_LINKS = [
+  {
+    name: "Email",
+    icon: <EnvelopeSimpleIcon size={20} />,
+    copy: "eddylim095@protonmail.com",
+    color: "hover:text-neon-green",
+  },
   {
     name: "Github",
     icon: <GithubLogoIcon size={20} />,
@@ -15,28 +21,19 @@ const SOCIAL_LINKS = [
     color: "hover:text-white",
   },
   {
-    name: "Twitter",
-    icon: <XLogoIcon size={20} />,
-    href: "https://x.com/eddyfy_eth",
-    color: "hover:text-blue-400",
-  },
-  {
     name: "LinkedIn",
     icon: <LinkedinLogoIcon size={20} />,
     href: "https://www.linkedin.com/in/eddy-limfy/",
     color: "hover:text-blue-600",
   },
-  {
-    name: "Telegram",
-    icon: <TelegramLogoIcon size={20} />,
-    href: "https://t.me/eddy3129",
-    color: "hover:text-neon-green",
-  },
 ];
 
 const TERMINAL_LOGS = [
   { text: "> Initializing secure handshake...", color: "text-gray-500" },
-  { text: "> Establishing connection to eddy's email...", color: "text-gray-500" },
+  {
+    text: "> Establishing connection to eddy's email...",
+    color: "text-gray-500",
+  },
   { text: "> Ready for message transmission.", color: "text-neon-green" },
 ];
 
@@ -52,40 +49,18 @@ export default function Contact() {
           <div className="h-px flex-1 bg-linear-to-r from-neon-green/50 to-transparent mb-4"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-stretch">
           {/* Left Column: Social Links & Info */}
-          <div className="flex flex-col justify-center space-y-8 lg:pr-12 order-1 lg:order-1">
+          <div className="flex flex-col gap-8 lg:pr-12 order-1 lg:order-1">
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">
-                Let's Connect
+                Let&apos;s Connect
               </h2>
               <p className="text-gray-400 pr-6 leading-relaxed text-justify">
-                I'm open to new roles, collaborative projects, and connecting
-                with inspiring people. If you have an opportunity, an idea, or
-                simply want to say GM, feel free to reach out!
+                I&apos;m open to new roles, collaborative projects, and
+                connecting with inspiring people. If you are working on
+                something interesting, feel free to reach out!
               </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-sm font-mono text-neon-green tracking-wider uppercase">
-                Social Protocols
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {SOCIAL_LINKS.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className={`social-link group ${social.color}`}
-                  >
-                    <div className="text-gray-400 group-hover:text-inherit transition-colors">
-                      {social.icon}
-                    </div>
-                    <span className="font-mono text-sm text-gray-300 group-hover:text-white">
-                      {social.name}
-                    </span>
-                  </a>
-                ))}
-              </div>
             </div>
 
             {/* Decorative Code Block */}
@@ -93,7 +68,10 @@ export default function Contact() {
               <p>
                 <span className="text-purple-400">const</span>{" "}
                 <span className="text-blue-400">status</span> ={" "}
-                <span className="text-green-400">{'"open to work & collaboration"'}</span>;
+                <span className="text-green-400">
+                  {'"open to work & collaboration"'}
+                </span>
+                ;
               </p>
               <p className="mt-2">
                 <span className="text-purple-400">async function</span>{" "}
@@ -103,7 +81,10 @@ export default function Contact() {
               <p className="pl-4">
                 <span className="text-yellow-400">await</span>{" "}
                 <span className="text-blue-400">reply</span>.send(
-                <span className="text-green-400">{"`Hey ${you.name}, thanks for reaching out! 👋`"}</span>);
+                <span className="text-green-400">
+                  {"`Hey ${you.name}, thanks for reaching out! 👋`"}
+                </span>
+                );
               </p>
               <p className="pl-4">
                 <span className="text-purple-400">if</span> (
@@ -118,6 +99,37 @@ export default function Contact() {
                 <span className="text-blue-400">soon</span>);
               </p>
               <p>&#125;</p>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-mono text-neon-green tracking-wider uppercase">
+                Social Protocols
+              </h3>
+              <div className="grid grid-cols-1 gap-3">
+                {SOCIAL_LINKS.map((social) =>
+                  social.copy ? (
+                    <CopyEmail
+                      key={social.name}
+                      email={social.copy}
+                      icon={social.icon}
+                      className={`social-link group ${social.color}`}
+                    />
+                  ) : (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      className={`social-link group ${social.color}`}
+                    >
+                      <div className="text-gray-400 group-hover:text-inherit transition-colors">
+                        {social.icon}
+                      </div>
+                      <span className="font-mono text-sm text-gray-300 group-hover:text-white">
+                        {social.name}
+                      </span>
+                    </a>
+                  ),
+                )}
+              </div>
             </div>
           </div>
 
