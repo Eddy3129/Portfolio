@@ -5,7 +5,7 @@ import TechStack from "../components/home/TechStack";
 const HERO_ROLES = [
   "Forward Deployed Engineer",
   "AI Solutions Architect",
-  "0-to-1 Builder",
+  "0-to-1 Builder From Strategy to Execution",
 ];
 
 const HERO_LINKS = [
@@ -43,7 +43,7 @@ export default function Home() {
           <TypingHero />
           <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xl md:text-2xl text-gray-400 mb-16 font-light">
             {HERO_ROLES.map((role, i) => (
-              <li key={role} className="flex items-center gap-4 whitespace-nowrap">
+              <li key={role} className="flex items-center gap-4 md:whitespace-nowrap">
                 {i > 0 && <span className="text-neon-green" aria-hidden="true">/</span>}
                 {role}
               </li>

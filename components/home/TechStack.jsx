@@ -3,9 +3,9 @@
 import { Component, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-const PLACEHOLDER = <div className="h-[600px] w-full" />;
+const PLACEHOLDER = <div className="h-[640px] w-full" />;
 
-const TechStackInner = dynamic(() => import("./TechStackInner"), {
+const AsciiScene = dynamic(() => import("./AsciiScene"), {
   ssr: false,
   loading: () => PLACEHOLDER,
 });
@@ -37,7 +37,7 @@ export default function TechStack() {
   if (!ready) return PLACEHOLDER;
   return (
     <WebGLBoundary>
-      <TechStackInner />
+      <AsciiScene />
     </WebGLBoundary>
   );
 }
