@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Eddy Lim | Tech Generalist",
+  title: "Eddy Lim Portfolio",
   description:
     "Welcome to the portfolio of Eddy, who builds for the decentralized future.",
 };
